@@ -1,0 +1,7 @@
+.injectived
+mongo
+oracle
+chronos
+exchange
+#!exchange/certs/*
+dumps/
