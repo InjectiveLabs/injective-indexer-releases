@@ -4,8 +4,14 @@
 
 ### Updated
 
-- Pin Exchange (Import, Process, and API), Event Provider, and Explorer to [indexer v1.21.8](https://github.com/InjectiveLabs/injective-indexer/releases/tag/v1.21.8) for chain 1.21 in both network examples, including their `APP_VERSION` values.
-- Existing installations must copy the `EXCHANGE_*_VERSION`, `EVENTPROVIDER_*_VERSION`, and `EXPLORER_*_VERSION` values into their own environment file to select this release. Preserve node connections, genesis files, and database data.
+- Pin the testnet Docker examples for Exchange, Event Provider, and Explorer to indexer `v1.21.30` for Injective chain 1.21, including the corresponding `APP_VERSION` values.
+- Pin the mainnet Docker examples for Exchange, Event Provider, and Explorer to indexer `v1.21.30` for Injective chain 1.21, including the corresponding `APP_VERSION` values.
+
+### Upgrading an existing deployment to v1.21.30
+
+1. Copy the updated `EXCHANGE_*_VERSION`, `EVENTPROVIDER_*_VERSION`, and `EXPLORER_*_VERSION` values into your existing `.env`. Keep your node connections, genesis files, and MongoDB data.
+2. Recreate Exchange Process, Explorer Process if enabled, and any other consumers of your Event Provider with the new indexer version. Confirm that all consumer instances are ready before upgrading Event Provider API.
+3. If you host Event Provider, recreate Event Provider Process and then Event Provider API. If you use a shared Event Provider, coordinate the API upgrade with its operator. Update Exchange API and Explorer API if enabled. Skip Exchange Import on an existing populated database.
 
 ### Deprecated
 
