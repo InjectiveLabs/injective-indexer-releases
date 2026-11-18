@@ -8,7 +8,7 @@
 
 ### Updated
 
-- Pin the testnet Docker examples for Exchange, Event Provider, and Explorer to indexer `v1.21.30` for Injective chain 1.21, including the corresponding `APP_VERSION` values.
+- Pin the testnet Docker examples for Exchange, Event Provider, and Explorer to indexer `v1.21.31` for Injective chain 1.21, including the corresponding `APP_VERSION` values. This version preserves the `demolished` status of derivative markets when a settlement pause event arrives afterward.
 
 ### Upgrading an existing deployment
 
