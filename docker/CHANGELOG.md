@@ -2,12 +2,15 @@
 
 ## [Unreleased]
 
+### Mainnet
+
+- Pin the mainnet Docker examples for Exchange, Event Provider, and Explorer to indexer `v1.21.31` for Injective chain 1.21, including the corresponding `APP_VERSION` values.
+
 ### Updated
 
 - Pin the testnet Docker examples for Exchange, Event Provider, and Explorer to indexer `v1.21.30` for Injective chain 1.21, including the corresponding `APP_VERSION` values.
-- Pin the mainnet Docker examples for Exchange, Event Provider, and Explorer to indexer `v1.21.30` for Injective chain 1.21, including the corresponding `APP_VERSION` values.
 
-### Upgrading an existing deployment to v1.21.30
+### Upgrading an existing deployment
 
 1. Copy the updated `EXCHANGE_*_VERSION`, `EVENTPROVIDER_*_VERSION`, and `EXPLORER_*_VERSION` values into your existing `.env`. Keep your node connections, genesis files, and MongoDB data. Make targets with a network suffix use the corresponding example file by default. Pass `ENV_FILE=.env` to use your existing configuration with those targets.
 2. Recreate Exchange Process, Explorer Process if enabled, and any other consumers of your Event Provider with the new indexer version. Confirm that all consumer instances are ready before upgrading Event Provider API.
