@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+### Mainnet
+
+- Pin the mainnet Docker examples for Exchange, Event Provider, and Explorer to indexer `v1.21.31` for Injective chain 1.21, including the corresponding `APP_VERSION` values.
+
+For existing mainnet deployments, reconcile spot and derivative market state from the chain during this upgrade.
+
+1. Stop all Exchange Process instances that write to the Exchange database. While they are stopped, read the last indexed block height from MongoDB.
+2. Set `INDEXER_COSMOS_LCD_URL` in your deployment `.env` to the base URL of a mainnet archival LCD reachable from Exchange Process. Verify that the LCD serves the block at the saved height and that spot and derivative market queries succeed with `x-cosmos-block-height` set to that height. Keep the processes stopped until this check passes. The reload clears the two market collections in MongoDB before repopulating them.
+3. Set `INDEXER_RELOAD_MARKETS_FROM_CHAIN=true` and recreate `indexer-exchange-process` with `v1.21.31` using that environment file. Run a single reload per Exchange database. Wait for `Markets migration completed successfully` in the process logs and confirm that indexing resumes.
+4. Set `INDEXER_RELOAD_MARKETS_FROM_CHAIN=false` and recreate Exchange Process so later starts skip the rebuild. Complete the consumer upgrades before upgrading Event Provider API.
+
 ### Updated
 
 - Pin the testnet Docker examples for Exchange, Event Provider, and Explorer to indexer `v1.21.31` for Injective chain 1.21, including the corresponding `APP_VERSION` values. This version preserves the `demolished` status of derivative markets when a settlement pause event arrives afterward.
