@@ -24,7 +24,7 @@ services:
     - ./scripts/mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh
 
   mongo-exporter:
-    image: bitnami/mongodb-exporter:0.40.0
+    image: percona/mongodb_exporter:0.40.0
     container_name: mongo-exporter
     restart: always
     environment:

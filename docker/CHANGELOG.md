@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Chain compatibility
+
+- This unreleased configuration targets Injective chain v1.21. Chain versions and indexer image tags are versioned independently; select compatible indexer images for every enabled service.
+
 ### Mainnet
 
 - Pin the mainnet Docker examples for Exchange, Event Provider, and Explorer to indexer `v1.21.31` for Injective chain 1.21, including the corresponding `APP_VERSION` values.
@@ -26,6 +30,10 @@ For existing mainnet deployments, reconcile spot and derivative market state fro
 ### Deprecated
 
 - Web3GW, Charts, and Chronos are deprecated in this repository and will no longer receive updates here. Their service definitions and dedicated environment variables have been removed. This repository maintains Exchange, Event Provider, and Explorer, with MongoDB and MongoDB Exporter.
+
+### Fixed
+
+- Use the upstream Percona MongoDB Exporter `0.40.0` image; the previous Bitnami image tag is no longer available.
 
 ### Migration
 
